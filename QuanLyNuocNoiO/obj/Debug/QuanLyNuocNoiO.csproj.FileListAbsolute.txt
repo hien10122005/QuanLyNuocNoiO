@@ -1,0 +1,9 @@
+D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\bin\Debug\QuanLyNuocNoiO.exe.config
+D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\bin\Debug\QuanLyNuocNoiO.exe
+D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\bin\Debug\QuanLyNuocNoiO.pdb
+D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.csproj.AssemblyReference.cache
+D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.Properties.Resources.resources
+D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.csproj.GenerateResource.cache
+D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.csproj.CoreCompileInputs.cache
+D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.exe
+D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.pdb
