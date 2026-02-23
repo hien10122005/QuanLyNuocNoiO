@@ -52,8 +52,41 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDangNhap.Designer.cs">
+      <DependentUpon>FormDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMenuChinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMenuChinh.Designer.cs">
+      <DependentUpon>FormMenuChinh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UC_GhiChiSo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC_GhiChiSo.Designer.cs">
+      <DependentUpon>UC_GhiChiSo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_KhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC_KhachHang.Designer.cs">
+      <DependentUpon>UC_KhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_KhuVuc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC_KhuVuc.Designer.cs">
+      <DependentUpon>UC_KhuVuc.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormMenuChinh.resx">
+      <DependentUpon>FormMenuChinh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
