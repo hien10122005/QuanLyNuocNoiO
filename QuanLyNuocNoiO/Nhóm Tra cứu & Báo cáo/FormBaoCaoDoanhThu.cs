@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyNuocNoiO
+namespace QuanLyNuocNoiO.Nhóm_Tra_cứu___Báo_cáo
 {
-    public partial class FormDangNhap : Form
+    public partial class FormBaoCaoDoanhThu : Form
     {
-        public FormDangNhap()
+        public FormBaoCaoDoanhThu()
         {
             InitializeComponent();
         }

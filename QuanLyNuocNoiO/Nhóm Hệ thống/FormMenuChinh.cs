@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyNuocNoiO
+namespace QuanLyNuocNoiO.Nhóm_Hệ_thống
 {
-    public partial class UC_GhiChiSo : UserControl
+    public partial class FormMenuChinh : Form
     {
-        public UC_GhiChiSo()
+        public FormMenuChinh()
         {
             InitializeComponent();
         }

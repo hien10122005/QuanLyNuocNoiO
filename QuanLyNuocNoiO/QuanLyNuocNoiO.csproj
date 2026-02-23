@@ -46,46 +46,107 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Class\ThongTinNhanVien.cs" />
+    <Compile Include="Main\FormMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Main\FormMenu.Designer.cs">
+      <DependentUpon>FormMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDangNhap.cs">
+    <Compile Include="Nhóm Danh mục\FormQuanLyBangGia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDangNhap.Designer.cs">
+    <Compile Include="Nhóm Danh mục\FormQuanLyBangGia.Designer.cs">
+      <DependentUpon>FormQuanLyBangGia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nhóm Danh mục\FormQuanLyDongHoNuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nhóm Danh mục\FormQuanLyDongHoNuoc.Designer.cs">
+      <DependentUpon>FormQuanLyDongHoNuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nhóm Danh mục\FormQuanLyKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nhóm Danh mục\FormQuanLyKhachHang.Designer.cs">
+      <DependentUpon>FormQuanLyKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nhóm Danh mục\FormQuanLyKhuVuc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nhóm Danh mục\FormQuanLyKhuVuc.Designer.cs">
+      <DependentUpon>FormQuanLyKhuVuc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nhóm Danh mục\FormQuanLyNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nhóm Danh mục\FormQuanLyNhanVien.Designer.cs">
+      <DependentUpon>FormQuanLyNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nhóm Hệ thống\FormDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nhóm Hệ thống\FormDangNhap.Designer.cs">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMenuChinh.cs">
+    <Compile Include="Nhóm Hệ thống\FormMenuChinh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMenuChinh.Designer.cs">
+    <Compile Include="Nhóm Hệ thống\FormMenuChinh.Designer.cs">
       <DependentUpon>FormMenuChinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nhóm Hệ thống\FormTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nhóm Hệ thống\FormTaiKhoan.Designer.cs">
+      <DependentUpon>FormTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nhóm Nghiệp vụ\FormGhiChiSo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nhóm Nghiệp vụ\FormGhiChiSo.Designer.cs">
+      <DependentUpon>FormGhiChiSo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nhóm Nghiệp vụ\FormLapHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nhóm Nghiệp vụ\FormLapHoaDon.Designer.cs">
+      <DependentUpon>FormLapHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nhóm Nghiệp vụ\FormThanhToan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nhóm Nghiệp vụ\FormThanhToan.Designer.cs">
+      <DependentUpon>FormThanhToan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nhóm Tra cứu &amp; Báo cáo\FormBaoCaoDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nhóm Tra cứu &amp; Báo cáo\FormBaoCaoDoanhThu.Designer.cs">
+      <DependentUpon>FormBaoCaoDoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nhóm Tra cứu &amp; Báo cáo\FormBaoCaoTieuThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nhóm Tra cứu &amp; Báo cáo\FormBaoCaoTieuThu.Designer.cs">
+      <DependentUpon>FormBaoCaoTieuThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nhóm Tra cứu &amp; Báo cáo\FormDanhSachNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nhóm Tra cứu &amp; Báo cáo\FormDanhSachNo.Designer.cs">
+      <DependentUpon>FormDanhSachNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nhóm Tra cứu &amp; Báo cáo\FormTraCuuHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nhóm Tra cứu &amp; Báo cáo\FormTraCuuHoaDon.Designer.cs">
+      <DependentUpon>FormTraCuuHoaDon.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UC_GhiChiSo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UC_GhiChiSo.Designer.cs">
-      <DependentUpon>UC_GhiChiSo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_KhachHang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UC_KhachHang.Designer.cs">
-      <DependentUpon>UC_KhachHang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_KhuVuc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UC_KhuVuc.Designer.cs">
-      <DependentUpon>UC_KhuVuc.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="FormMenuChinh.resx">
-      <DependentUpon>FormMenuChinh.cs</DependentUpon>
+    <EmbeddedResource Include="Main\FormMenu.resx">
+      <DependentUpon>FormMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -109,5 +170,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

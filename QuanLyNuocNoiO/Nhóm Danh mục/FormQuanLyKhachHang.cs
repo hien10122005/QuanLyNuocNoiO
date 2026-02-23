@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyNuocNoiO
+namespace QuanLyNuocNoiO.Nhóm_Danh_mục
 {
-    public partial class UC_KhachHang : Form
+    public partial class FormQuanLyKhachHang : Form
     {
-        public UC_KhachHang()
+        public FormQuanLyKhachHang()
         {
             InitializeComponent();
         }
