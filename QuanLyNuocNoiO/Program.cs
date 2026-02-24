@@ -1,4 +1,5 @@
 ﻿using QuanLyNuocNoiO.Main;
+using QuanLyNuocNoiO.Nhóm_Danh_mục;
 using QuanLyNuocNoiO.Nhóm_Hệ_thống;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,9 @@ namespace QuanLyNuocNoiO
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMenu());
+            //Application.Run(new FormMenu());
+            Application.Run(new FormQuanLyNhanVien());
+
         }
     }
 }
