@@ -1,4 +1,5 @@
-﻿using QuanLyNuocNoiO.Nhóm_Danh_mục;
+﻿using QuanLyNuocNoiO.Class;
+using QuanLyNuocNoiO.Nhóm_Danh_mục;
 using QuanLyNuocNoiO.Nhóm_Hệ_thống;
 using QuanLyNuocNoiO.Nhóm_Nghiệp_vụ;
 using QuanLyNuocNoiO.Nhóm_Tra_cứu___Báo_cáo;
@@ -26,10 +27,24 @@ namespace QuanLyNuocNoiO.Main
             palChaDanhMuc.Height = 52;
             palChaTrCuuBaoCao.Height = 52;
         }
+       
+        private void PhanQuyenMenu()
+        {
+            string vaiTro = ThongTinNhanVien.VaiTro;
+
+            if (vaiTro == "Ghi chỉ số" || vaiTro == "Thu ngân")
+            { 
+                btnNhanVien.Visible = false;
+                btnTaiKhoan.Visible = false; 
+            }
+
+        }
         public FormMenu()
         {
             InitializeComponent();
             loadHeightPalList();
+            PhanQuyenMenu();
+            
         }
         private Form currentFormChild = null;
         public void OpenChildForm(Form childForm)
@@ -52,8 +67,7 @@ namespace QuanLyNuocNoiO.Main
         }
         private void FormMenu_Load(object sender, EventArgs e)
         {
-            
-
+         
         }
 
         void DongMoList(ref bool bienco, Panel palCha, Panel list)
@@ -94,6 +108,7 @@ namespace QuanLyNuocNoiO.Main
             DialogResult d = MessageBox.Show("Bạn chắc chắn muốn thoát không ","Thông Báo",MessageBoxButtons.OK);
             if (d == DialogResult.OK)
             {
+                ThongTinNhanVien.DangXuat();
                 f.Show();
                 this.Hide();
             }
@@ -192,5 +207,7 @@ namespace QuanLyNuocNoiO.Main
             labTieuDe.Text = btnBaoCaoTieuThu.Text;
 
         }
+
+       
     }
 }
