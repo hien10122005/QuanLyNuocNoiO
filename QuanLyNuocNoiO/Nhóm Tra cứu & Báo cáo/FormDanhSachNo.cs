@@ -19,20 +19,26 @@ namespace QuanLyNuocNoiO.Nhóm_Tra_cứu___Báo_cáo
         {
             LoadKhuVuc();
             LoadDanhSachNo();
+           
         }
 
         private void LoadKhuVuc()
         {
-            string sqlkv = "SELECT MaKhuVuc, TenKhuVuc FROM KhuVuc ";
-            SqlDataAdapter da = new SqlDataAdapter(sqlkv,strCon);
+            string sqlkv = "SELECT MaKhuVuc, TenKhuVuc FROM KhuVuc";
+            SqlDataAdapter da = new SqlDataAdapter(sqlkv, strCon);
             DataSet ds = new DataSet();
             da.Fill(ds);
+            DataRow dr = ds.Tables[0].NewRow();
+            dr["MaKhuVuc"] = "ALL";
+            dr["TenKhuVuc"] = "--- Tất cả khu vực ---";
+
+            ds.Tables[0].Rows.InsertAt(dr, 0);
+
             cboKhuVuc.DataSource = ds.Tables[0];
             cboKhuVuc.DisplayMember = "TenKhuVuc";
             cboKhuVuc.ValueMember = "MaKhuVuc";
         }
-
-        private void LoadDanhSachNo()
+        void LoadDanhSachNo()
         {
             try
             {
@@ -120,41 +126,49 @@ namespace QuanLyNuocNoiO.Nhóm_Tra_cứu___Báo_cáo
 
         private void cboKhuVuc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboKhuVuc.SelectedValue == null) return;
+                    if (cboKhuVuc.SelectedValue == null) return;
 
-            string maKV = cboKhuVuc.SelectedValue.ToString();
+                    string maKV = cboKhuVuc.SelectedValue.ToString();
 
-            string sql = @"
-                        SELECT k.MaKH, k.HoTen, k.SoDienThoai, 
-                               COUNT(h.MaHD) as SoThangNo, 
-                               SUM(h.TongTien) as TongTienNo,
-                               CASE 
-                                  WHEN COUNT(h.MaHD) = 1 THEN N'Nhắc nhở'
-                                  WHEN COUNT(h.MaHD) >= 2 THEN N'Cần khóa'
-                                  ELSE N'Bình thường'
-                               END as TrangThaiXuLy
-                        FROM KhachHang k
-                        JOIN HoaDon h ON k.MaKH = h.MaKH
-                        WHERE h.TrangThai = N'Chưa thanh toán' 
-                        AND k.TrangThai = N'Hoạt động' AND k.MaKhuVuc = @MaKV
-                        GROUP BY k.MaKH, k.HoTen, k.SoDienThoai
-                        HAVING COUNT(h.MaHD) >= 1";
+                    string sql = @"
+                    SELECT k.MaKH, k.HoTen, k.SoDienThoai, 
+                           COUNT(h.MaHD) as SoThangNo, 
+                           SUM(h.TongTien) as TongTienNo,
+                           CASE 
+                               WHEN COUNT(h.MaHD) = 1 THEN N'Nhắc nhở'
+                               WHEN COUNT(h.MaHD) >= 2 THEN N'Cần khóa'
+                               ELSE N'Bình thường'
+                           END as TrangThaiXuLy
+                    FROM KhachHang k
+                    JOIN HoaDon h ON k.MaKH = h.MaKH
+                    WHERE h.TrangThai = N'Chưa thanh toán' 
+                          AND k.TrangThai = N'Hoạt động'";
 
-            using (SqlConnection conn = new SqlConnection(strCon))
-            {
-                SqlDataAdapter da = new SqlDataAdapter(sql, conn);
-                da.SelectCommand.Parameters.AddWithValue("@MaKV", maKV);
+                    if (maKV != "ALL")
+                    {
+                        sql += " AND k.MaKhuVuc = @MaKV";
+                    }
 
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                    sql += @" GROUP BY k.MaKH, k.HoTen, k.SoDienThoai  HAVING COUNT(h.MaHD) >= 1";
 
-                dgvDanhSachNo.DataSource = dt; 
+                    using (SqlConnection conn = new SqlConnection(strCon))
+                    {
+                        SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+
+                        if (maKV != "ALL")
+                        {
+                            da.SelectCommand.Parameters.AddWithValue("@MaKV", maKV);
+                        }
+
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        dgvDanhSachNo.DataSource = dt;
             }
         }
 
         private void btnMoi_Click(object sender, EventArgs e)
         {
-            LoadKhuVuc();
             LoadDanhSachNo();
         }
     }

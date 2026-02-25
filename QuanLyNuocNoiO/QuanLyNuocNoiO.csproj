@@ -170,8 +170,14 @@
     <EmbeddedResource Include="Nhóm Danh mục\FormQuanLyKhuVuc.resx">
       <DependentUpon>FormQuanLyKhuVuc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Nhóm Nghiệp vụ\FormGhiChiSo.resx">
+      <DependentUpon>FormGhiChiSo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Nhóm Tra cứu &amp; Báo cáo\FormBaoCaoDoanhThu.resx">
       <DependentUpon>FormBaoCaoDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nhóm Tra cứu &amp; Báo cáo\FormBaoCaoTieuThu.resx">
+      <DependentUpon>FormBaoCaoTieuThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Nhóm Tra cứu &amp; Báo cáo\FormDanhSachNo.resx">
       <DependentUpon>FormDanhSachNo.cs</DependentUpon>

@@ -89,20 +89,33 @@ namespace QuanLyNuocNoiO.Main
                 list.Height = 52;
             }
         }
+        void DongList(ref bool bienco, Panel palCha, Panel list)
+        {
+            bienco = false;
+            palCha.Height = 52;
+            list.Height = 52;
+        }
         private void btnDanhMuc_Click(object sender, EventArgs e)
         {
             DongMoList(ref danhmuc, palChaDanhMuc, palListDanhMuc);
+           DongList(ref nghiepvu, palChaNghiepVu, palListNghiepVu);
+            DongList(ref tracuu, palChaTrCuuBaoCao, palChaTrCuuBaoCao);
+
+
         }
 
         private void btnNghiepVu_Click(object sender, EventArgs e)
         {
             DongMoList(ref nghiepvu, palChaNghiepVu, palListNghiepVu);
+            DongList(ref danhmuc, palChaDanhMuc, palListDanhMuc);
+             DongList(ref tracuu, palChaTrCuuBaoCao, palChaTrCuuBaoCao);
         }
 
         private void btnTraCuubaoCao_Click(object sender, EventArgs e)
         {
             DongMoList(ref tracuu, palChaTrCuuBaoCao, palChaTrCuuBaoCao);
-
+               DongList(ref danhmuc, palChaDanhMuc, palListDanhMuc);
+            DongList(ref nghiepvu, palChaNghiepVu, palListNghiepVu);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -126,7 +139,7 @@ namespace QuanLyNuocNoiO.Main
 
         private void btnNhanVien_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormQuanLyNhanVien());
+           // OpenChildForm(new FormQuanLyNhanVien());
             labTieuDe.Text = btnNhanVien.Text;
 
         }

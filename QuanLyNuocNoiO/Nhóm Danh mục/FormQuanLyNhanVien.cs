@@ -104,7 +104,7 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
         {
            
         
-            OpenConnection();
+               //OpenConnection();
             string sql = "UPDATE NhanVien SET MaNV=@maNV, TenDN=@tenDN, MatKhau=@pass, VaiTro=@role, NgayTao=@date, TrangThai=@status WHERE MaTK=@maTK";
             SqlCommand cmd = new SqlCommand(sql, con);
 
@@ -118,7 +118,7 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
 
             int kq = cmd.ExecuteNonQuery();
             if (kq > 0) MessageBox.Show("Cập nhật thành công!");
-            LoadData();
+            //LoadData();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -126,13 +126,14 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
             DialogResult dr = MessageBox.Show("Bạn có chắc muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                OpenConnection();
+               // OpenConnection();
+               SqlDataAdapter con = new SqlDataAdapter();
                 string sql = "DELETE FROM NhanVien WHERE MaTK=@maTK";
-                SqlCommand cmd = new SqlCommand(sql, sqlCon);
-                cmd.Parameters.AddWithValue("@maTK", txtMaTaiKhoan.Text);
+               // SqlCommand cmd = new SqlCommand(sql, con);
+                //cmd.Parameters.AddWithValue("@maTK", txtMaTaiKhoan.Text);
 
-                cmd.ExecuteNonQuery();
-                LoadData();
+                //cmd.ExecuteNonQuery();
+             //   LoadData();
                 ClearFields();
             }
         }
