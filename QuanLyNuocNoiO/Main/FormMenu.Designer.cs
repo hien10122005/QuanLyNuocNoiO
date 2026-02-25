@@ -174,6 +174,7 @@
             this.btnTaiKhoan.TabIndex = 3;
             this.btnTaiKhoan.Text = "Tài khoản";
             this.btnTaiKhoan.UseVisualStyleBackColor = true;
+            this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
             // 
             // btnThanhToan
             // 
@@ -184,6 +185,7 @@
             this.btnThanhToan.TabIndex = 2;
             this.btnThanhToan.Text = "Thanh toán";
             this.btnThanhToan.UseVisualStyleBackColor = true;
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // btnLapHoaDon
             // 
@@ -194,6 +196,7 @@
             this.btnLapHoaDon.TabIndex = 1;
             this.btnLapHoaDon.Text = " Lập hóa đơn";
             this.btnLapHoaDon.UseVisualStyleBackColor = true;
+            this.btnLapHoaDon.Click += new System.EventHandler(this.btnLapHoaDon_Click);
             // 
             // btnGhiChiSo
             // 
@@ -204,6 +207,7 @@
             this.btnGhiChiSo.TabIndex = 0;
             this.btnGhiChiSo.Text = "Ghi chỉ số";
             this.btnGhiChiSo.UseVisualStyleBackColor = true;
+            this.btnGhiChiSo.Click += new System.EventHandler(this.btnGhiChiSo_Click);
             // 
             // btnNghiepVu
             // 
@@ -264,6 +268,7 @@
             this.btnBaoCaoTieuThu.TabIndex = 3;
             this.btnBaoCaoTieuThu.Text = "Báo cáo tiêu thụ";
             this.btnBaoCaoTieuThu.UseVisualStyleBackColor = true;
+            this.btnBaoCaoTieuThu.Click += new System.EventHandler(this.btnBaoCaoTieuThu_Click);
             // 
             // btnBaoCaoDoanhThu
             // 
@@ -274,6 +279,7 @@
             this.btnBaoCaoDoanhThu.TabIndex = 2;
             this.btnBaoCaoDoanhThu.Text = "Báo cáo doanh thu";
             this.btnBaoCaoDoanhThu.UseVisualStyleBackColor = true;
+            this.btnBaoCaoDoanhThu.Click += new System.EventHandler(this.btnBaoCaoDoanhThu_Click);
             // 
             // btnDanhSachNo
             // 
@@ -284,6 +290,7 @@
             this.btnDanhSachNo.TabIndex = 1;
             this.btnDanhSachNo.Text = "Danh sách nợ";
             this.btnDanhSachNo.UseVisualStyleBackColor = true;
+            this.btnDanhSachNo.Click += new System.EventHandler(this.btnDanhSachNo_Click);
             // 
             // btnTraCuuHoaDon
             // 
@@ -294,6 +301,7 @@
             this.btnTraCuuHoaDon.TabIndex = 0;
             this.btnTraCuuHoaDon.Text = "Tra cứu hóa đơn";
             this.btnTraCuuHoaDon.UseVisualStyleBackColor = true;
+            this.btnTraCuuHoaDon.Click += new System.EventHandler(this.btnTraCuuHoaDon_Click);
             // 
             // btnTraCuubaoCao
             // 
@@ -355,6 +363,7 @@
             this.btnBangGia.TabIndex = 4;
             this.btnBangGia.Text = "Quản lý bảng giá";
             this.btnBangGia.UseVisualStyleBackColor = true;
+            this.btnBangGia.Click += new System.EventHandler(this.btnBangGia_Click);
             // 
             // btnDongHoNuoc
             // 
@@ -365,6 +374,7 @@
             this.btnDongHoNuoc.TabIndex = 3;
             this.btnDongHoNuoc.Text = "Quản lý đồng hồ nước";
             this.btnDongHoNuoc.UseVisualStyleBackColor = true;
+            this.btnDongHoNuoc.Click += new System.EventHandler(this.btnDongHoNuoc_Click);
             // 
             // btnNhanVien
             // 
@@ -375,6 +385,7 @@
             this.btnNhanVien.TabIndex = 2;
             this.btnNhanVien.Text = "Quản lý nhân viên";
             this.btnNhanVien.UseVisualStyleBackColor = true;
+            this.btnNhanVien.Click += new System.EventHandler(this.btnNhanVien_Click);
             // 
             // btnKhachHang
             // 
@@ -385,6 +396,7 @@
             this.btnKhachHang.TabIndex = 1;
             this.btnKhachHang.Text = "Quản lý khách hàng";
             this.btnKhachHang.UseVisualStyleBackColor = true;
+            this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
             // 
             // btnKhuVuc
             // 

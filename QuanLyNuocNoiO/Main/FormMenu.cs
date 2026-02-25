@@ -49,21 +49,25 @@ namespace QuanLyNuocNoiO.Main
         private Form currentFormChild = null;
         public void OpenChildForm(Form childForm)
         {
-            // đóng form cũ nếu có
+            // Nếu có form đang mở rồi thì đóng nó lại cho sạch
             if (currentFormChild != null)
+            {
                 currentFormChild.Close();
+            }
 
             currentFormChild = childForm;
 
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
+            // Cấu hình quan trọng để form con nằm trong panel
+            childForm.TopLevel = false;           // Không cho làm cửa sổ độc lập
+            childForm.FormBorderStyle = FormBorderStyle.None; // Bỏ khung viền (nút X, thu nhỏ...)
+            childForm.Dock = DockStyle.Fill;      // QUAN TRỌNG: Lấp đầy toàn bộ diện tích Panel
 
-            palMain.Controls.Clear();
+            // Giả sử cái Panel bên phải của bạn tên là 'panelContent' 
+            // (Bạn hãy kiểm tra tên panel đó trong Properties rồi thay vào đây nhé)
             palMain.Controls.Add(childForm);
-            childForm.BringToFront();
-            childForm.Show();
-            //labTieuDe.Text = childForm.Text;
+            palMain.Tag = childForm;
+            childForm.BringToFront();             // Đưa form lên phía trước
+            childForm.Show();                     // Hiển thị form
         }
         private void FormMenu_Load(object sender, EventArgs e)
         {
