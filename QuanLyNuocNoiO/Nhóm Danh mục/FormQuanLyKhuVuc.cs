@@ -260,5 +260,10 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
                 MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dgvKhuVuc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
