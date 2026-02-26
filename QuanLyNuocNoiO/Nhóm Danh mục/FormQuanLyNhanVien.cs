@@ -27,36 +27,20 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
 
         private void FormQuanLyNhanVien_Load(object sender, EventArgs e)
         {
-            try
-            {
-                string sql = "select from NhanVien";
-                da = new SqlDataAdapter(sql, con);
-                ds = new DataSet();
-                da.Fill(ds);
-                bd = new SqlCommandBuilder(da);
-                dataGridQLNV.DataSource = ds.Tables[0];
-                dataGridQLNV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            LoadData();
         }
 
-        private void dataGridQLNV_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
         void ClearFields()
         {
-            txtMaTK.Text = "";
+            //txtMaTK.Text = "";
             txtMaNV.Text = "";
             txtTenDN.Text = "";
             txtMatKhau.Text = "";
             txtVaiTro.Text = "";
             txtNgayTao.Text = "";
             txtTrangThai.Text = "";
-            txtMaTK.Focus(); // Đưa con trỏ chuột về ô đầu tiên
+            //txtMaTK.Focus(); // Đưa con trỏ chuột về ô đầu tiên
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -67,13 +51,13 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
                 if (con.State == ConnectionState.Closed) con.Open();
 
                 // 2. Viết câu lệnh SQL Insert
-                string sqlInsert = "INSERT INTO NhanVien (MaTK, MaNV, TenDN, MatKhau, VaiTro, NgayTao, TrangThai) " +
-                                   "VALUES (@maTK, @maNV, @tenDN, @pass, @role, @date, @status)";
+                string sqlInsert = "INSERT INTO NhanVien ( MaNV, TenDN, MatKhau, ChuVu, NgayTao, TrangThai) " +
+                                   "VALUES ( @maNV, @tenDN, @pass, @role, @date, @status)";
 
                 SqlCommand cmd = new SqlCommand(sqlInsert, con);
 
                 // 3. Gán tham số từ các Textbox (Hãy kiểm tra lại ID của Textbox trong Form của bạn)
-                cmd.Parameters.AddWithValue("@maTK", txtMaTK.Text);
+                //cmd.Parameters.AddWithValue("@maTK", txtMaTK.Text);
                 cmd.Parameters.AddWithValue("@maNV", txtMaNV.Text);
                 cmd.Parameters.AddWithValue("@tenDN", txtTenDN.Text);
                 cmd.Parameters.AddWithValue("@pass", txtMatKhau.Text);
@@ -139,17 +123,11 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            OpenConnection();
-=======
-           
-        
-               //OpenConnection();
->>>>>>> a6e4157f51de8ede83d33455c61bb349c19c1e1a
-            string sql = "UPDATE NhanVien SET MaNV=@maNV, TenDN=@tenDN, MatKhau=@pass, VaiTro=@role, NgayTao=@date, TrangThai=@status WHERE MaTK=@maTK";
-            SqlCommand cmd = new SqlCommand(sql, con);
 
-            cmd.Parameters.AddWithValue("@maTK", txtMaTK.Text); // Khóa chính để tìm dòng cần sửa
+            OpenConnection();
+
+            string sql = "UPDATE NhanVien SET MaNV=@maNV, TenDN=@tenDN, MatKhau=@pass, VaiTro=@role, NgayTao=@date, TrangThai=@status WHERE MaNV=@maNV";
+            SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@maNV", txtMaNV.Text);
             cmd.Parameters.AddWithValue("@tenDN", txtTenDN.Text);
             cmd.Parameters.AddWithValue("@pass", txtMatKhau.Text);
@@ -167,20 +145,28 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
             DialogResult dr = MessageBox.Show("Bạn có chắc muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-               // OpenConnection();
                SqlDataAdapter con = new SqlDataAdapter();
-                string sql = "DELETE FROM NhanVien WHERE MaTK=@maTK";
-<<<<<<< HEAD
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@maTK", txtMaTK.Text);
-=======
-               // SqlCommand cmd = new SqlCommand(sql, con);
-                //cmd.Parameters.AddWithValue("@maTK", txtMaTaiKhoan.Text);
->>>>>>> a6e4157f51de8ede83d33455c61bb349c19c1e1a
+                string sql = "DELETE FROM NhanVien WHERE MaNV=@maNV";
 
-                //cmd.ExecuteNonQuery();
-             //   LoadData();
+                SqlCommand cmd = new SqlCommand(sql);
+                cmd.Parameters.AddWithValue("@maNV", txtMaNV.Text);
+
                 ClearFields();
+            }
+        }
+
+        private void dataGridQLNV_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Đảm bảo người dùng không click vào header
+            {
+                DataGridViewRow row = dataGridQLNV.Rows[e.RowIndex];
+               // txtMaNV.Text = row.Cells["MaNV"].Value.ToString();
+                txtMaNV.Text = row.Cells["MaNV"].Value.ToString();
+                txtTenDN.Text = row.Cells["HoTen"].Value.ToString();
+                txtMatKhau.Text = row.Cells["SoDienThoai"].Value.ToString();
+                txtVaiTro.Text = row.Cells["ChucVu"].Value.ToString();
+                txtNgayTao.Text = row.Cells["MaKhuVuc"].Value.ToString();
+                txtTrangThai.Text = row.Cells["TrangThai"].Value.ToString();
             }
         }
     }

@@ -139,7 +139,7 @@ namespace QuanLyNuocNoiO.Main
 
         private void btnNhanVien_Click(object sender, EventArgs e)
         {
-           // OpenChildForm(new FormQuanLyNhanVien());
+            OpenChildForm(new FormQuanLyNhanVien());
             labTieuDe.Text = btnNhanVien.Text;
 
         }
