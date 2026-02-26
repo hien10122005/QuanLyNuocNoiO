@@ -22,6 +22,7 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
         public FormQuanLyNhanVien()
         {
             InitializeComponent();
+            
         }
 
         private void FormQuanLyNhanVien_Load(object sender, EventArgs e)
@@ -99,11 +100,45 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
                 con.Close();
             }
         }
+        // Hàm này giúp xử lý lỗi dòng 107
+        void OpenConnection()
+        {
+            if (con == null) con = new SqlConnection(connectionString);
+            if (con.State == ConnectionState.Closed) con.Open();
+        }
+        void LoadData()
+        {
+            try
+            {
+                // Kiểm tra và mở kết nối
+                if (con == null) con = new SqlConnection(connectionString);
+                if (con.State == ConnectionState.Closed) con.Open();
 
+                // Câu lệnh SQL lấy dữ liệu (đảm bảo có dấu * )
+                string sql = "select * from NhanVien";
+
+                da = new SqlDataAdapter(sql, con);
+                ds = new DataSet();
+                da.Fill(ds);
+
+                // Đổ dữ liệu vào DataGridView
+                dataGridQLNV.DataSource = ds.Tables[0];
+
+                // Tự động căn chỉnh độ rộng cột cho đẹp
+                dataGridQLNV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message, "Thông báo");
+            }
+            finally
+            {
+                // Đóng kết nối sau khi tải xong để tiết kiệm tài nguyên
+                if (con.State == ConnectionState.Open) con.Close();
+            }
+        }
         private void btnSua_Click(object sender, EventArgs e)
         {
-           
-        
             OpenConnection();
             string sql = "UPDATE NhanVien SET MaNV=@maNV, TenDN=@tenDN, MatKhau=@pass, VaiTro=@role, NgayTao=@date, TrangThai=@status WHERE MaTK=@maTK";
             SqlCommand cmd = new SqlCommand(sql, con);
@@ -128,8 +163,8 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
             {
                 OpenConnection();
                 string sql = "DELETE FROM NhanVien WHERE MaTK=@maTK";
-                SqlCommand cmd = new SqlCommand(sql, sqlCon);
-                cmd.Parameters.AddWithValue("@maTK", txtMaTaiKhoan.Text);
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@maTK", txtMaTK.Text);
 
                 cmd.ExecuteNonQuery();
                 LoadData();
