@@ -155,21 +155,65 @@ namespace QuanLyNuocNoiO.Nhóm_Nghiệp_vụ
 
         string TaoMaChiSo(SqlConnection conn)
         {
-            // Tối ưu sinh mã tự động
-            string sql = "SELECT MAX(CAST(SUBSTRING(MaChiSo, 3, 10) AS INT)) FROM ChiSo WHERE MaChiSo LIKE 'CS%'";
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            object result = cmd.ExecuteScalar();
-            int so = (result == DBNull.Value) ? 1 : Convert.ToInt32(result) + 1;
-            return "CS" + so.ToString("D4");
-        }
+            // Câu SQL: lấy số lớn nhất phía sau tiền tố CS
+            string sql = @"
+        SELECT MAX(CAST(SUBSTRING(MaChiSo, 3, 10) AS INT)) FROM ChiSo WHERE MaChiSo LIKE 'CS%'";
 
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            object result = cmd.ExecuteScalar(); // Kết quả sẽ là số lớn nhất phía sau CS, hoặc null nếu chưa có dòng nào
+
+            int so;
+
+            // Nếu bảng chưa có dữ liệu
+            if (result == null || result == DBNull.Value)
+            {
+                so = 1; // bắt đầu từ 1
+            }
+            else
+            {
+                so = Convert.ToInt32(result) + 1; // tăng lên 1
+            }
+
+            // Ghép lại thành mã dạng CS0001
+            string maMoi = "CS" + so.ToString("D4");
+
+            return maMoi;
+        }
+        // Hàm kiểm tra tính hợp lệ của chỉ số mới trước khi lưu
+        bool KiemTraChiSoMoiHopLe()
+        {
+            if (string.IsNullOrWhiteSpace(txtChiSoMoi.Text)) // Kiểm tra nếu chưa nhập chỉ số mới
+            {
+                MessageBox.Show("Vui lòng nhập chỉ số mới!");
+                txtChiSoMoi.Focus();
+                return false;
+            }
+
+            if (!int.TryParse(txtChiSoMoi.Text, out int chiSoMoiNhap)) // Kiểm tra nếu chỉ số mới không phải là số
+            {
+                MessageBox.Show("Chỉ số mới phải là số!");
+                txtChiSoMoi.Focus();
+                return false;
+            }
+
+            if (chiSoMoiNhap <= chiSoCu) // Kiểm tra nếu chỉ số mới không lớn hơn chỉ số cũ
+            {
+                MessageBox.Show("Chỉ số mới phải lớn hơn chỉ số cũ!");
+                txtChiSoMoi.Focus();
+                return false;
+            }
+
+            return true;
+        }
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            // ... các kiểm tra đầu vào ...
+            if (!KiemTraChiSoMoiHopLe())
+                return;
 
             int chiSoMoi = int.Parse(txtChiSoMoi.Text);
-            // chiSoCu này PHẢI là con số đang hiện trên Form (ví dụ 116)
             int sanLuong = chiSoMoi - chiSoCu;
+
 
             using (SqlConnection conn = new SqlConnection(strCon))
             {
@@ -185,8 +229,10 @@ namespace QuanLyNuocNoiO.Nhóm_Nghiệp_vụ
                 string sql;
                 if (exists == 0) // Nếu chưa có thì INSERT
                 {
-                    sql = @"INSERT INTO ChiSo (MaChiSo, MaDongHo, Thang, Nam, ChiSoCu, ChiSoMoi, SanLuong, NgayGhi) 
-                    VALUES (@MaChiSo, @MaDongHo, @Thang, @Nam, @ChiSoCu, @ChiSoMoi, @SanLuong, GETDATE())";
+                    sql = @"INSERT INTO ChiSo 
+                            (MaChiSo, MaDongHo, MaNV, Thang, Nam, ChiSoCu, ChiSoMoi, SanLuong, NgayGhi, GhiChu)
+                            VALUES 
+                            (@MaChiSo, @MaDongHo, @MaNV, @Thang, @Nam, @ChiSoCu, @ChiSoMoi, @SanLuong, GETDATE(), @GhiChu)";
                 }
                 else // Nếu có rồi thì UPDATE
                 {
@@ -195,18 +241,27 @@ namespace QuanLyNuocNoiO.Nhóm_Nghiệp_vụ
                 }
 
                 SqlCommand cmd = new SqlCommand(sql, conn);
-                if (exists == 0) cmd.Parameters.AddWithValue("@MaChiSo", TaoMaChiSo(conn));
-
+                if (exists == 0) 
+                cmd.Parameters.AddWithValue("@MaChiSo", TaoMaChiSo(conn));
                 cmd.Parameters.AddWithValue("@MaDongHo", maDongHoDangChon);
+                cmd.Parameters.AddWithValue("@MaNv", ThongTinNhanVien.MaNhanVien); // Thay bằng mã nhân viên thực tế đang đăng nhập
                 cmd.Parameters.AddWithValue("@Thang", cboThang.Text);
                 cmd.Parameters.AddWithValue("@Nam", txtNam.Text);
                 cmd.Parameters.AddWithValue("@ChiSoCu", chiSoCu); // Giá trị 116 sẽ được lưu vào đây
                 cmd.Parameters.AddWithValue("@ChiSoMoi", chiSoMoi);
                 cmd.Parameters.AddWithValue("@SanLuong", sanLuong); // Giá trị hiệu số sẽ được lưu vào đây
-
+                cmd.Parameters.AddWithValue("@GhiChu", txtGhiChu.Text);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Lưu dữ liệu thành công!");
                 btnHienThi.PerformClick();
+            }
+        }
+        // Chỉ cho phép nhập số vào txtChiSoMoi
+        private void txtChiSoMoi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; 
             }
         }
     }

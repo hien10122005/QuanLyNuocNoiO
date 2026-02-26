@@ -167,6 +167,9 @@
     <EmbeddedResource Include="Main\FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Nhóm Danh mục\FormQuanLyBangGia.resx">
+      <DependentUpon>FormQuanLyBangGia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Nhóm Danh mục\FormQuanLyKhuVuc.resx">
       <DependentUpon>FormQuanLyKhuVuc.cs</DependentUpon>
     </EmbeddedResource>
