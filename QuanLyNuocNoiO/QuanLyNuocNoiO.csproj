@@ -167,11 +167,26 @@
     <EmbeddedResource Include="Main\FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Nhóm Danh mục\FormQuanLyBangGia.resx">
+      <DependentUpon>FormQuanLyBangGia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Nhóm Danh mục\FormQuanLyKhuVuc.resx">
       <DependentUpon>FormQuanLyKhuVuc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Nhóm Danh mục\FormQuanLyNhanVien.resx">
-      <DependentUpon>FormQuanLyNhanVien.cs</DependentUpon>
+    <EmbeddedResource Include="Nhóm Nghiệp vụ\FormGhiChiSo.resx">
+      <DependentUpon>FormGhiChiSo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nhóm Tra cứu &amp; Báo cáo\FormBaoCaoDoanhThu.resx">
+      <DependentUpon>FormBaoCaoDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nhóm Tra cứu &amp; Báo cáo\FormBaoCaoTieuThu.resx">
+      <DependentUpon>FormBaoCaoTieuThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nhóm Tra cứu &amp; Báo cáo\FormDanhSachNo.resx">
+      <DependentUpon>FormDanhSachNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nhóm Tra cứu &amp; Báo cáo\FormTraCuuHoaDon.resx">
+      <DependentUpon>FormTraCuuHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

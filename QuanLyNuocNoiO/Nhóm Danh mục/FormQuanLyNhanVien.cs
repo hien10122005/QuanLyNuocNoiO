@@ -139,7 +139,13 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             OpenConnection();
+=======
+           
+        
+               //OpenConnection();
+>>>>>>> a6e4157f51de8ede83d33455c61bb349c19c1e1a
             string sql = "UPDATE NhanVien SET MaNV=@maNV, TenDN=@tenDN, MatKhau=@pass, VaiTro=@role, NgayTao=@date, TrangThai=@status WHERE MaTK=@maTK";
             SqlCommand cmd = new SqlCommand(sql, con);
 
@@ -153,7 +159,7 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
 
             int kq = cmd.ExecuteNonQuery();
             if (kq > 0) MessageBox.Show("Cập nhật thành công!");
-            LoadData();
+            //LoadData();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -161,13 +167,19 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
             DialogResult dr = MessageBox.Show("Bạn có chắc muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                OpenConnection();
+               // OpenConnection();
+               SqlDataAdapter con = new SqlDataAdapter();
                 string sql = "DELETE FROM NhanVien WHERE MaTK=@maTK";
+<<<<<<< HEAD
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@maTK", txtMaTK.Text);
+=======
+               // SqlCommand cmd = new SqlCommand(sql, con);
+                //cmd.Parameters.AddWithValue("@maTK", txtMaTaiKhoan.Text);
+>>>>>>> a6e4157f51de8ede83d33455c61bb349c19c1e1a
 
-                cmd.ExecuteNonQuery();
-                LoadData();
+                //cmd.ExecuteNonQuery();
+             //   LoadData();
                 ClearFields();
             }
         }

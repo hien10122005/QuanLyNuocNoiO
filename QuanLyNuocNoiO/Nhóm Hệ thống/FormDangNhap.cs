@@ -63,7 +63,7 @@ namespace QuanLyNuocNoiO.Nhóm_Hệ_thống
                                 JOIN NhanVien nv ON tk.MaNV = nv.MaNV
                                 WHERE tk.TenDangNhap = @username
                                   AND tk.MatKhau = @password
-                                  AND tk.TrangThai = 1";
+                                  AND tk.TrangThai = N'Hoạt động'";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@username", tenDangNhap);
