@@ -102,12 +102,6 @@
     <Compile Include="Nhóm Hệ thống\FormDangNhap.Designer.cs">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="Nhóm Hệ thống\FormMenuChinh.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Nhóm Hệ thống\FormMenuChinh.Designer.cs">
-      <DependentUpon>FormMenuChinh.cs</DependentUpon>
-    </Compile>
     <Compile Include="Nhóm Hệ thống\FormTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Nhóm Danh mục\FormQuanLyBangGia.resx">
       <DependentUpon>FormQuanLyBangGia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nhóm Danh mục\FormQuanLyDongHoNuoc.resx">
+      <DependentUpon>FormQuanLyDongHoNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Nhóm Danh mục\FormQuanLyKhuVuc.resx">
       <DependentUpon>FormQuanLyKhuVuc.cs</DependentUpon>

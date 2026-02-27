@@ -19,3 +19,4 @@ D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocN
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.exe
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.pdb
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.exe.config
+D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.Nhóm_Danh_mục.FormQuanLyDongHoNuoc.resources
