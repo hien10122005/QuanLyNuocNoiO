@@ -1,4 +1,5 @@
 ﻿
+using QuanLyNuocNoiO.rdlc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -133,20 +134,58 @@ namespace QuanLyNuocNoiO.Nhóm_Tra_cứu___Báo_cáo
         // Xử lý nút In Hóa Đơn (Placeholder)
         private void btnInHD_Click(object sender, EventArgs e)
         {
-            if (dgvHoaDon.CurrentRow != null)
+            if (dgvHoaDon.CurrentRow == null)
             {
-                string maHD = dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString();
-                MessageBox.Show("Đang chuẩn bị in hóa đơn: " + maHD + "\n(Tính năng này cần tích hợp ReportViewer hoặc thư viện Excel)", "Thông báo");
+                MessageBox.Show("Vui lòng chọn một hóa đơn để in.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            try
             {
-                MessageBox.Show("Vui lòng chọn một hóa đơn trong danh sách để in!", "Thông báo");
+                // 2. Lấy mã hóa đơn từ dòng đang được chọn trong bảng
+                string maHD = dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString();
+
+                // 3. Tạo một thể hiện (instance) của FormInHoaDon và truyền mã hóa đơn vào
+                // Đảm bảo bạn đã có using cho namespace chứa FormInHoaDon
+                // Ví dụ: using QuanLyNuocNoiO.Nhóm_Nghiệp_vụ;
+                FormInHoaDon formIn = new FormInHoaDon(maHD);
+
+                // 4. Hiển thị form in hóa đơn
+                // ShowDialog() sẽ làm cho form này nổi lên trên và người dùng phải đóng nó mới thao tác được form cũ
+                formIn.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi khi chuẩn bị in hóa đơn: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void FormTraCuuHoaDon_Load_1(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void dgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            /*
+             * h.MaHD, k.HoTen as [Tên Khách Hàng], h.Thang, h.Nam, 
+                                 h.SanLuong as [Sản Lượng], h.TongTien as [Tổng Tiền], 
+                                 h.NgayLapHD as [Ngày Lập], h.TrangThai as [Trạng Thái]
+             */
+            if (e.RowIndex < 0)
+                {
+                return; // Nếu click vào header hoặc ngoài vùng dữ liệu, không làm gì
+            }
+            DataGridViewRow row = dgvHoaDon.Rows[e.RowIndex];
+            txtMaHD.Text = row.Cells["MaHD"].Value.ToString();
+           txtTenKH.Text = row.Cells["Tên Khách Hàng"].Value.ToString();
+            cboThang.SelectedItem = row.Cells["Thang"].Value.ToString();
+            txtNam.Text = row.Cells["Nam"].Value.ToString();
+            cboTrangThai.SelectedItem = row.Cells["Trạng Thái"].Value.ToString();
+
+
+
+
         }
     }
 }
