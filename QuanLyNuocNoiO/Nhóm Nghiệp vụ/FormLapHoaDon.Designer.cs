@@ -40,6 +40,7 @@
             this.btnLapHoaDonTatCa = new System.Windows.Forms.Button();
             this.btnLapHoaDonChon = new System.Windows.Forms.Button();
             this.dgvDanhSachCho = new System.Windows.Forms.DataGridView();
+            this.colChon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.pnlChonKy.SuspendLayout();
             this.pnlActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachCho)).BeginInit();
@@ -58,7 +59,7 @@
             this.pnlChonKy.Location = new System.Drawing.Point(0, 0);
             this.pnlChonKy.Name = "pnlChonKy";
             this.pnlChonKy.Size = new System.Drawing.Size(984, 60);
-            this.pnlChonKy.TabIndex = 3;
+            this.pnlChonKy.TabIndex = 6;
             // 
             // btnHienThi
             // 
@@ -69,7 +70,7 @@
             this.btnHienThi.TabIndex = 4;
             this.btnHienThi.Text = "Hiển thị danh sách chờ";
             this.btnHienThi.UseVisualStyleBackColor = true;
-            this.btnHienThi.Click += new System.EventHandler(this.btnHienThi_Click);
+            this.btnHienThi.Click += new System.EventHandler(this.BtnHienThi_Click);
             // 
             // cboKhuVuc
             // 
@@ -135,7 +136,7 @@
             this.pnlActions.Location = new System.Drawing.Point(0, 490);
             this.pnlActions.Name = "pnlActions";
             this.pnlActions.Size = new System.Drawing.Size(984, 60);
-            this.pnlActions.TabIndex = 4;
+            this.pnlActions.TabIndex = 7;
             // 
             // btnLapHoaDonTatCa
             // 
@@ -147,7 +148,7 @@
             this.btnLapHoaDonTatCa.TabIndex = 1;
             this.btnLapHoaDonTatCa.Text = "Lập hóa đơn cho tất cả";
             this.btnLapHoaDonTatCa.UseVisualStyleBackColor = true;
-            this.btnLapHoaDonTatCa.Click += new System.EventHandler(this.btnLapHoaDonTatCa_Click);
+            this.btnLapHoaDonTatCa.Click += new System.EventHandler(this.BtnLapHoaDonTatCa_Click);
             // 
             // btnLapHoaDonChon
             // 
@@ -159,16 +160,24 @@
             this.btnLapHoaDonChon.TabIndex = 0;
             this.btnLapHoaDonChon.Text = "Lập hóa đơn đã chọn";
             this.btnLapHoaDonChon.UseVisualStyleBackColor = true;
-            this.btnLapHoaDonChon.Click += new System.EventHandler(this.btnLapHoaDonChon_Click);
+            this.btnLapHoaDonChon.Click += new System.EventHandler(this.BtnLapHoaDonChon_Click);
             // 
             // dgvDanhSachCho
             // 
             this.dgvDanhSachCho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDanhSachCho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colChon});
             this.dgvDanhSachCho.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDanhSachCho.Location = new System.Drawing.Point(0, 60);
             this.dgvDanhSachCho.Name = "dgvDanhSachCho";
             this.dgvDanhSachCho.Size = new System.Drawing.Size(984, 430);
-            this.dgvDanhSachCho.TabIndex = 5;
+            this.dgvDanhSachCho.TabIndex = 8;
+            this.dgvDanhSachCho.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvDanhSachCho_CurrentCellDirtyStateChanged);
+            // 
+            // colChon
+            // 
+            this.colChon.HeaderText = "CHọn";
+            this.colChon.Name = "colChon";
             // 
             // FormLapHoaDon
             // 
@@ -191,6 +200,7 @@
 
         }
         #endregion
+
         private System.Windows.Forms.Panel pnlChonKy;
         private System.Windows.Forms.Button btnHienThi;
         private System.Windows.Forms.ComboBox cboKhuVuc;
@@ -203,5 +213,6 @@
         private System.Windows.Forms.Button btnLapHoaDonTatCa;
         private System.Windows.Forms.Button btnLapHoaDonChon;
         private System.Windows.Forms.DataGridView dgvDanhSachCho;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colChon;
     }
 }

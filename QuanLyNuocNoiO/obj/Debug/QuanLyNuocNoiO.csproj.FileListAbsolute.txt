@@ -1,8 +1,8 @@
-D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\bin\Debug\rdlc\rpinHoaDon.rdlc
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\bin\Debug\SqlServerTypes\x64\msvcr120.dll
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\bin\Debug\SqlServerTypes\x86\msvcr120.dll
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
+D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\bin\Debug\rdlc\rpinHoaDon.rdlc
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\bin\Debug\QuanLyNuocNoiO.exe.config
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\bin\Debug\QuanLyNuocNoiO.exe
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\bin\Debug\QuanLyNuocNoiO.pdb
@@ -70,9 +70,9 @@ D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocN
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.Nhóm_Tra_cứu___Báo_cáo.FormDanhSachNo.resources
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.Nhóm_Tra_cứu___Báo_cáo.FormTraCuuHoaDon.resources
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.Properties.Resources.resources
+D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.rdlc.FormInHoaDon.resources
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.csproj.GenerateResource.cache
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.csproj.CoreCompileInputs.cache
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNu.B1108CFC.Up2Date
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.exe
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.pdb
-D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.rdlc.FormInHoaDon.resources
