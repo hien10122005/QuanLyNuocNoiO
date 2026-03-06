@@ -11,19 +11,26 @@ namespace QuanLyNuocNoiO.Nhóm_Tra_cứu___Báo_cáo
     public partial class FormBaoCaoDoanhThu : Form
     {
         // !!! THAY THẾ CHUỖI KẾT NỐI NÀY BẰNG CỦA BẠN !!!
-        private string connectionString = KetNoi.KetNoi.ChuoiKetNoi;
+         string connectionString = KetNoi.KetNoi.ChuoiKetNoi;
 
         public FormBaoCaoDoanhThu()
         {
             InitializeComponent();
             this.Load += new System.EventHandler(this.FormBaoCaoDoanhThu_Load);
         }
-
+        public void SetupThangComboBox()
+        {
+            for (int i = 1; i <= 12; i++)
+            {
+                cboThang.Items.Add(i);
+            }
+            cboThang.SelectedIndex = DateTime.Now.Month - 1;
+        }
         private void FormBaoCaoDoanhThu_Load(object sender, EventArgs e)
         {
             LoadKhuVucComboBox();
-            dtpTuNgay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            dtpDenNgay.Value = DateTime.Now;
+            SetupThangComboBox();
+            txtNam.Text = DateTime.Now.Year.ToString();
         }
 
         private void LoadKhuVucComboBox()
@@ -56,33 +63,34 @@ namespace QuanLyNuocNoiO.Nhóm_Tra_cứu___Báo_cáo
         {
             try
             {
-                DateTime tuNgay = dtpTuNgay.Value.Date;
-                DateTime denNgay = dtpDenNgay.Value.Date.AddDays(1).AddSeconds(-1);
-                string maKhuVuc = cboKhuVuc.SelectedValue.ToString();
+                string maKhuVuc = cboKhuVuc.SelectedValue?.ToString() ?? "ALL";
 
                 string query = @"SELECT 
-                                    FORMAT(tt.NgayTT, 'dd/MM/yyyy') AS NgayThu,
-                                    kh.HoTen,
-                                    kv.TenKhuVuc,
-                                    tt.SoTienTT AS SoTien
-                                FROM ThanhToan tt
-                                JOIN HoaDon hd ON tt.MaHD = hd.MaHD
-                                JOIN KhachHang kh ON hd.MaKH = kh.MaKH
-                                JOIN KhuVuc kv ON kh.MaKhuVuc = kv.MaKhuVuc
-                                WHERE tt.NgayTT BETWEEN @TuNgay AND @DenNgay ";
+                            FORMAT(tt.NgayTT, 'dd/MM/yyyy') AS NgayThu,
+                            kh.HoTen,
+                            kv.TenKhuVuc,
+                            tt.SoTienTT AS SoTien,
+                            hd.MaHD
+                         FROM ThanhToan tt
+                         JOIN HoaDon hd ON tt.MaHD = hd.MaHD
+                         JOIN KhachHang kh ON hd.MaKH = kh.MaKH
+                         JOIN KhuVuc kv ON kh.MaKhuVuc = kv.MaKhuVuc
+                         WHERE hd.Thang = @thang AND hd.Nam = @nam ";
 
                 if (maKhuVuc != "ALL")
                 {
                     query += " AND kh.MaKhuVuc = @MaKhuVuc ";
                 }
-                query += "ORDER BY tt.NgayTT";
+
+                query += " ORDER BY tt.NgayTT";
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@TuNgay", tuNgay);
-                        cmd.Parameters.AddWithValue("@DenNgay", denNgay);
+                        cmd.Parameters.Add("@thang", SqlDbType.Int).Value = int.Parse(cboThang.Text);
+                        cmd.Parameters.Add("@nam", SqlDbType.Int).Value = int.Parse(txtNam.Text);
+
                         if (maKhuVuc != "ALL")
                         {
                             cmd.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
@@ -92,7 +100,8 @@ namespace QuanLyNuocNoiO.Nhóm_Tra_cứu___Báo_cáo
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        dgvDoanhThu.DataSource = dt;
+                    dgvDoanhThu.DataSource = null;
+                    dgvDoanhThu.DataSource = dt;
                         FormatGrid();
                         CalculateAndDisplayTotal(dt);
                     }
@@ -108,6 +117,7 @@ namespace QuanLyNuocNoiO.Nhóm_Tra_cứu___Báo_cáo
         {
             if (dgvDoanhThu.Columns.Count > 0)
             {
+                dgvDoanhThu.Columns["MaHD"].HeaderText = "Hóa Đơn";
                 dgvDoanhThu.Columns["NgayThu"].HeaderText = "Ngày Thu";
                 dgvDoanhThu.Columns["HoTen"].HeaderText = "Tên Khách Hàng";
                 dgvDoanhThu.Columns["TenKhuVuc"].HeaderText = "Khu Vực";
@@ -119,7 +129,7 @@ namespace QuanLyNuocNoiO.Nhóm_Tra_cứu___Báo_cáo
         private void CalculateAndDisplayTotal(DataTable dt)
         {
             decimal tongDoanhThu = 0;
-            // Tính tổng từ cột 'SoTien' trong DataTable
+
             foreach (DataRow row in dt.Rows)
             {
                 tongDoanhThu += Convert.ToDecimal(row["SoTien"]);

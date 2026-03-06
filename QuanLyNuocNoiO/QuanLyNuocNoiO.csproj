@@ -215,6 +215,9 @@
     <EmbeddedResource Include="Nhóm Nghiệp vụ\FormLapHoaDon.resx">
       <DependentUpon>FormLapHoaDon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Nhóm Nghiệp vụ\FormThanhToan.resx">
+      <DependentUpon>FormThanhToan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Nhóm Tra cứu &amp; Báo cáo\FormBaoCaoDoanhThu.resx">
       <DependentUpon>FormBaoCaoDoanhThu.cs</DependentUpon>
     </EmbeddedResource>

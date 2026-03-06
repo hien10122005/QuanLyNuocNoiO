@@ -118,7 +118,7 @@ namespace QuanLyNuocNoiO.Nhóm_Nghiệp_vụ
             {
                 int soHienTai = Convert.ToInt32(ketQua);
                 int soTiepTheo = soHienTai + 1;
-                maMoi = "HD" + soTiepTheo.ToString("0000");
+                maMoi = "HD" + soTiepTheo.ToString("000");
             }
 
             return maMoi;

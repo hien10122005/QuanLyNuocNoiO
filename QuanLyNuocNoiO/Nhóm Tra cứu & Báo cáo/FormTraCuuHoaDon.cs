@@ -45,7 +45,7 @@ namespace QuanLyNuocNoiO.Nhóm_Tra_cứu___Báo_cáo
                                  h.SanLuong as [Sản Lượng], h.TongTien as [Tổng Tiền], 
                                  h.NgayLapHD as [Ngày Lập], h.TrangThai as [Trạng Thái]
                                  FROM HoaDon h
-                                 INNER JOIN KhachHang k ON h.MaKH = k.MaKH";
+                                 INNER JOIN KhachHang k ON h.MaKH = k.MaKH ";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, sqlCon);
                 DataTable dt = new DataTable();

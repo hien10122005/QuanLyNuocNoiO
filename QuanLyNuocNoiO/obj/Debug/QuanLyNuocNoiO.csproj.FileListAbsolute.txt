@@ -76,3 +76,4 @@ D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocN
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNu.B1108CFC.Up2Date
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.exe
 D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.pdb
+D:\QuanLyNuoc\QuanLyNuocNoiO\QuanLyNuocNoiO\QuanLyNuocNoiO\obj\Debug\QuanLyNuocNoiO.Nhóm_Nghiệp_vụ.FormThanhToan.resources
