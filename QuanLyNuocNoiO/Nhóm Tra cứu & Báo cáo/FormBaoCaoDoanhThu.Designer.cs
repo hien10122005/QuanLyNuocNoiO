@@ -31,15 +31,15 @@
             this.pnlControls = new System.Windows.Forms.Panel();
             this.btnThongKe = new System.Windows.Forms.Button();
             this.cboKhuVuc = new System.Windows.Forms.ComboBox();
-            this.dtpDenNgay = new System.Windows.Forms.DateTimePicker();
-            this.dtpTuNgay = new System.Windows.Forms.DateTimePicker();
             this.lblKhuVuc = new System.Windows.Forms.Label();
-            this.lblDenNgay = new System.Windows.Forms.Label();
-            this.lblTuNgay = new System.Windows.Forms.Label();
             this.pnlTongCong = new System.Windows.Forms.Panel();
             this.lblTongDoanhThuValue = new System.Windows.Forms.Label();
             this.lblTongDoanhThu = new System.Windows.Forms.Label();
             this.dgvDoanhThu = new System.Windows.Forms.DataGridView();
+            this.txtNam = new System.Windows.Forms.TextBox();
+            this.lblNam = new System.Windows.Forms.Label();
+            this.cboThang = new System.Windows.Forms.ComboBox();
+            this.lblThang = new System.Windows.Forms.Label();
             this.pnlControls.SuspendLayout();
             this.pnlTongCong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoanhThu)).BeginInit();
@@ -47,13 +47,13 @@
             // 
             // pnlControls
             // 
+            this.pnlControls.Controls.Add(this.txtNam);
+            this.pnlControls.Controls.Add(this.lblNam);
+            this.pnlControls.Controls.Add(this.cboThang);
+            this.pnlControls.Controls.Add(this.lblThang);
             this.pnlControls.Controls.Add(this.btnThongKe);
             this.pnlControls.Controls.Add(this.cboKhuVuc);
-            this.pnlControls.Controls.Add(this.dtpDenNgay);
-            this.pnlControls.Controls.Add(this.dtpTuNgay);
             this.pnlControls.Controls.Add(this.lblKhuVuc);
-            this.pnlControls.Controls.Add(this.lblDenNgay);
-            this.pnlControls.Controls.Add(this.lblTuNgay);
             this.pnlControls.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlControls.Location = new System.Drawing.Point(0, 0);
             this.pnlControls.Name = "pnlControls";
@@ -80,26 +80,6 @@
             this.cboKhuVuc.Size = new System.Drawing.Size(220, 25);
             this.cboKhuVuc.TabIndex = 5;
             // 
-            // dtpDenNgay
-            // 
-            this.dtpDenNgay.CustomFormat = "dd/MM/yyyy";
-            this.dtpDenNgay.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.dtpDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDenNgay.Location = new System.Drawing.Point(325, 17);
-            this.dtpDenNgay.Name = "dtpDenNgay";
-            this.dtpDenNgay.Size = new System.Drawing.Size(150, 25);
-            this.dtpDenNgay.TabIndex = 4;
-            // 
-            // dtpTuNgay
-            // 
-            this.dtpTuNgay.CustomFormat = "dd/MM/yyyy";
-            this.dtpTuNgay.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.dtpTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTuNgay.Location = new System.Drawing.Point(80, 17);
-            this.dtpTuNgay.Name = "dtpTuNgay";
-            this.dtpTuNgay.Size = new System.Drawing.Size(150, 25);
-            this.dtpTuNgay.TabIndex = 3;
-            // 
             // lblKhuVuc
             // 
             this.lblKhuVuc.AutoSize = true;
@@ -109,26 +89,6 @@
             this.lblKhuVuc.Size = new System.Drawing.Size(57, 17);
             this.lblKhuVuc.TabIndex = 2;
             this.lblKhuVuc.Text = "Khu vực:";
-            // 
-            // lblDenNgay
-            // 
-            this.lblDenNgay.AutoSize = true;
-            this.lblDenNgay.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblDenNgay.Location = new System.Drawing.Point(250, 20);
-            this.lblDenNgay.Name = "lblDenNgay";
-            this.lblDenNgay.Size = new System.Drawing.Size(66, 17);
-            this.lblDenNgay.TabIndex = 1;
-            this.lblDenNgay.Text = "Đến ngày:";
-            // 
-            // lblTuNgay
-            // 
-            this.lblTuNgay.AutoSize = true;
-            this.lblTuNgay.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblTuNgay.Location = new System.Drawing.Point(12, 20);
-            this.lblTuNgay.Name = "lblTuNgay";
-            this.lblTuNgay.Size = new System.Drawing.Size(58, 17);
-            this.lblTuNgay.TabIndex = 0;
-            this.lblTuNgay.Text = "Từ ngày:";
             // 
             // pnlTongCong
             // 
@@ -177,6 +137,43 @@
             this.dgvDoanhThu.Size = new System.Drawing.Size(984, 450);
             this.dgvDoanhThu.TabIndex = 2;
             // 
+            // txtNam
+            // 
+            this.txtNam.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtNam.Location = new System.Drawing.Point(244, 17);
+            this.txtNam.Name = "txtNam";
+            this.txtNam.Size = new System.Drawing.Size(100, 25);
+            this.txtNam.TabIndex = 9;
+            // 
+            // lblNam
+            // 
+            this.lblNam.AutoSize = true;
+            this.lblNam.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblNam.Location = new System.Drawing.Point(199, 20);
+            this.lblNam.Name = "lblNam";
+            this.lblNam.Size = new System.Drawing.Size(39, 17);
+            this.lblNam.TabIndex = 10;
+            this.lblNam.Text = "Năm:";
+            // 
+            // cboThang
+            // 
+            this.cboThang.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.cboThang.FormattingEnabled = true;
+            this.cboThang.Location = new System.Drawing.Point(94, 17);
+            this.cboThang.Name = "cboThang";
+            this.cboThang.Size = new System.Drawing.Size(80, 25);
+            this.cboThang.TabIndex = 8;
+            // 
+            // lblThang
+            // 
+            this.lblThang.AutoSize = true;
+            this.lblThang.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblThang.Location = new System.Drawing.Point(36, 20);
+            this.lblThang.Name = "lblThang";
+            this.lblThang.Size = new System.Drawing.Size(47, 17);
+            this.lblThang.TabIndex = 7;
+            this.lblThang.Text = "Tháng:";
+            // 
             // FormBaoCaoDoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -200,16 +197,16 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlControls;
-        private System.Windows.Forms.Label lblDenNgay;
-        private System.Windows.Forms.Label lblTuNgay;
         private System.Windows.Forms.Label lblKhuVuc;
-        private System.Windows.Forms.DateTimePicker dtpTuNgay;
-        private System.Windows.Forms.DateTimePicker dtpDenNgay;
         private System.Windows.Forms.ComboBox cboKhuVuc;
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Panel pnlTongCong;
         private System.Windows.Forms.Label lblTongDoanhThu;
         private System.Windows.Forms.Label lblTongDoanhThuValue;
         private System.Windows.Forms.DataGridView dgvDoanhThu;
+        private System.Windows.Forms.TextBox txtNam;
+        private System.Windows.Forms.Label lblNam;
+        private System.Windows.Forms.ComboBox cboThang;
+        private System.Windows.Forms.Label lblThang;
     }
 }

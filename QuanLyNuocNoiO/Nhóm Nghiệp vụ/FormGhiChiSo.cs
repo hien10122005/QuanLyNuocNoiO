@@ -156,8 +156,7 @@ namespace QuanLyNuocNoiO.Nhóm_Nghiệp_vụ
         string TaoMaChiSo(SqlConnection conn)
         {
             // Câu SQL: lấy số lớn nhất phía sau tiền tố CS
-            string sql = @"
-        SELECT MAX(CAST(SUBSTRING(MaChiSo, 3, 10) AS INT)) FROM ChiSo WHERE MaChiSo LIKE 'CS%'";
+            string sql = @" SELECT MAX(CAST(SUBSTRING(MaChiSo, 3, 10) AS INT)) FROM ChiSo WHERE MaChiSo LIKE 'CS%'";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 

@@ -18,16 +18,28 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
         {
             InitializeComponent();
         }
+         void LoadKhachHang()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter(
+                    "SELECT MaKH, HoTen FROM KhachHang", conn);
 
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                cboKhachHang.DataSource = dt;
+                cboKhachHang.DisplayMember = "HoTen"; // hiện tên
+                cboKhachHang.ValueMember = "MaKH";     // giá trị thật
+            }
+        }
         private void FormQuanLyDongHoNuoc_Load(object sender, EventArgs e)
         {
-            LoadKhachHangComboBox();
+            LoadKhachHang();
             SetupTrangThaiComboBox();
             LoadData();
             SetButtonStates(true);
         }
-
-        #region CÁC HÀM TIỆN ÍCH VÀ TẢI DỮ LIỆU
         private void LoadData()
         {
             try
@@ -65,22 +77,7 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
             }
         }
 
-        private void LoadKhachHangComboBox()
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT MaKH, HoTen FROM KhachHang", conn);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    cboKhachHang.DataSource = dt;
-                    cboKhachHang.DisplayMember = "HoTen";
-                    cboKhachHang.ValueMember = "MaKH";
-                }
-            }
-            catch (Exception ex) { MessageBox.Show("Lỗi tải danh sách khách hàng: " + ex.Message); }
-        }
+
 
         private void SetupTrangThaiComboBox()
         {
@@ -90,18 +87,18 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
             cboTrangThai.SelectedIndex = 0;
         }
 
-         void XoaThongTin()
+        void XoaThongTin()
         {
             txtMaDongHo.Text = "";
             txtSoSeri.Text = "";
             txtViTri.Text = "";
-            if (cboKhachHang.Items.Count > 0) cboKhachHang.SelectedIndex = 0;
+            cboKhachHang.SelectedIndex = -1;
             if (cboTrangThai.Items.Count > 0) cboTrangThai.SelectedIndex = 0;
             dtpNgayLapDat.Value = DateTime.Now;
             dtpNgayKiemDinh.Value = DateTime.Now;
         }
 
-         void SetButtonStates(bool isInitialState)
+        void SetButtonStates(bool isInitialState)
         {
             btnThem.Enabled = isInitialState;
             btnSua.Enabled = isInitialState;
@@ -112,9 +109,6 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
             btnLamMoi.Text = isInitialState ? "Làm mới" : "Hủy"; // Đổi tên nút làm mới thành hủy khi đang ở trạng thái thêm/sửa
             grpThongTin.Enabled = !isInitialState;
         }
-        #endregion
-
-        #region CÁC SỰ KIỆN
         private void DgvDongHo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -123,9 +117,13 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
                 txtMaDongHo.Text = row.Cells["MaDongHo"].Value.ToString();
                 txtSoSeri.Text = row.Cells["SoSeri"].Value.ToString();
                 txtViTri.Text = row.Cells["ViTriLapDat"].Value.ToString();
-                cboKhachHang.SelectedValue = row.Cells["MaKH"].Value;
+
+                // ⭐ FIX QUAN TRỌNG
+                cboKhachHang.SelectedValue = row.Cells["MaKH"].Value.ToString();
+
                 cboTrangThai.SelectedItem = row.Cells["TrangThai"].Value.ToString();
                 dtpNgayLapDat.Value = Convert.ToDateTime(row.Cells["NgayLapDat"].Value);
+
                 if (row.Cells["NgayKiemDinh"].Value != DBNull.Value)
                     dtpNgayKiemDinh.Value = Convert.ToDateTime(row.Cells["NgayKiemDinh"].Value);
             }
@@ -165,7 +163,7 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
                         cmd.ExecuteNonQuery();
                     }
                     LoadData();
-                    XoaThongTin ();
+                    XoaThongTin();
                 }
                 catch (Exception ex) { MessageBox.Show("Lỗi khi xóa: " + ex.Message); }
             }
@@ -173,7 +171,9 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
 
         private void BtnLuu_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtMaDongHo.Text) || string.IsNullOrWhiteSpace(txtSoSeri.Text) || cboKhachHang.SelectedValue == null)
+            if (string.IsNullOrWhiteSpace(txtMaDongHo.Text) ||
+                string.IsNullOrWhiteSpace(txtSoSeri.Text) ||
+                cboKhachHang.SelectedValue == null)
             {
                 MessageBox.Show("Mã đồng hồ, số seri và khách hàng không được để trống.");
                 return;
@@ -184,27 +184,35 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
+
                     string sql = isAdding
-                        ? "INSERT INTO DongHoNuoc(MaDongHo, MaKH, SoSeri, ViTriLapDat, NgayLapDat, NgayKiemDinh, TrangThai) VALUES(@MaDH, @MaKH, @SoSeri, @ViTri, @NgayLD, @NgayKD, @TrangThai)"
-                        : "UPDATE DongHoNuoc SET MaKH = @MaKH, SoSeri = @SoSeri, ViTriLapDat = @ViTri, NgayLapDat = @NgayLD, NgayKiemDinh = @NgayKD, TrangThai = @TrangThai WHERE MaDongHo = @MaDH";
+                        ? @"INSERT INTO DongHoNuoc (MaDongHo, MaKH, SoSeri, ViTriLapDat, NgayLapDat, NgayKiemDinh, TrangThai) VALUES(@MaDH, @MaKH, @SoSeri, @ViTri, @NgayLD, @NgayKD, @TrangThai)"
+                        : @"UPDATE DongHoNuocSET MaKH = @MaKH,SoSeri = @SoSeri,ViTriLapDat = @ViTri,NgayLapDat = @NgayLD,NgayKiemDinh = @NgayKD,TrangThai = @TrangThai WHERE MaDongHo = @MaDH";
 
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@MaDH", txtMaDongHo.Text);
                         cmd.Parameters.AddWithValue("@MaKH", cboKhachHang.SelectedValue);
+
                         cmd.Parameters.AddWithValue("@SoSeri", txtSoSeri.Text);
                         cmd.Parameters.AddWithValue("@ViTri", txtViTri.Text);
                         cmd.Parameters.AddWithValue("@NgayLD", dtpNgayLapDat.Value);
                         cmd.Parameters.AddWithValue("@NgayKD", dtpNgayKiemDinh.Value);
-                        cmd.Parameters.AddWithValue("@TrangThai", cboTrangThai.SelectedItem.ToString());
+                        cmd.Parameters.AddWithValue("@TrangThai",
+                            cboTrangThai.SelectedItem?.ToString() ?? "");
+
                         cmd.ExecuteNonQuery();
                     }
                 }
+
                 MessageBox.Show("Lưu thành công!", "Thông báo");
                 LoadData();
                 SetButtonStates(true);
             }
-            catch (Exception ex) { MessageBox.Show("Lỗi khi lưu: " + ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lưu: " + ex.Message);
+            }
         }
 
         private void BtnLamMoi_Click(object sender, EventArgs e)
@@ -221,6 +229,5 @@ namespace QuanLyNuocNoiO.Nhóm_Danh_mục
                 XoaThongTin();
             }
         }
-        #endregion
     }
 }

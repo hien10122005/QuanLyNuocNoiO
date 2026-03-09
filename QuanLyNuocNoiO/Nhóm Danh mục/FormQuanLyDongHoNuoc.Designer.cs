@@ -33,7 +33,6 @@
             this.cboTrangThai = new System.Windows.Forms.ComboBox();
             this.dtpNgayKiemDinh = new System.Windows.Forms.DateTimePicker();
             this.dtpNgayLapDat = new System.Windows.Forms.DateTimePicker();
-            this.cboKhachHang = new System.Windows.Forms.ComboBox();
             this.txtViTri = new System.Windows.Forms.TextBox();
             this.txtSoSeri = new System.Windows.Forms.TextBox();
             this.txtMaDongHo = new System.Windows.Forms.TextBox();
@@ -45,11 +44,12 @@
             this.lblKhachHang = new System.Windows.Forms.Label();
             this.lblMaDongHo = new System.Windows.Forms.Label();
             this.pnlChucNang = new System.Windows.Forms.Panel();
+            this.btnLuu = new System.Windows.Forms.Button();
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.cboKhachHang = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDongHo)).BeginInit();
             this.grpThongTin.SuspendLayout();
             this.pnlChucNang.SuspendLayout();
@@ -76,10 +76,10 @@
             // grpThongTin
             // 
             this.grpThongTin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpThongTin.Controls.Add(this.cboKhachHang);
             this.grpThongTin.Controls.Add(this.cboTrangThai);
             this.grpThongTin.Controls.Add(this.dtpNgayKiemDinh);
             this.grpThongTin.Controls.Add(this.dtpNgayLapDat);
-            this.grpThongTin.Controls.Add(this.cboKhachHang);
             this.grpThongTin.Controls.Add(this.txtViTri);
             this.grpThongTin.Controls.Add(this.txtSoSeri);
             this.grpThongTin.Controls.Add(this.txtMaDongHo);
@@ -127,16 +127,6 @@
             this.dtpNgayLapDat.Name = "dtpNgayLapDat";
             this.dtpNgayLapDat.Size = new System.Drawing.Size(230, 25);
             this.dtpNgayLapDat.TabIndex = 4;
-            // 
-            // cboKhachHang
-            // 
-            this.cboKhachHang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboKhachHang.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.cboKhachHang.FormattingEnabled = true;
-            this.cboKhachHang.Location = new System.Drawing.Point(135, 80);
-            this.cboKhachHang.Name = "cboKhachHang";
-            this.cboKhachHang.Size = new System.Drawing.Size(230, 25);
-            this.cboKhachHang.TabIndex = 1;
             // 
             // txtViTri
             // 
@@ -245,6 +235,16 @@
             this.pnlChucNang.Size = new System.Drawing.Size(384, 60);
             this.pnlChucNang.TabIndex = 2;
             // 
+            // btnLuu
+            // 
+            this.btnLuu.Location = new System.Drawing.Point(231, 10);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(70, 40);
+            this.btnLuu.TabIndex = 5;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.BtnLuu_Click);
+            // 
             // btnLamMoi
             // 
             this.btnLamMoi.Location = new System.Drawing.Point(304, 10);
@@ -265,16 +265,6 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.BtnXoa_Click);
             // 
-            // btnThem
-            // 
-            this.btnThem.Location = new System.Drawing.Point(4, 10);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(70, 40);
-            this.btnThem.TabIndex = 0;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.BtnThem_Click);
-            // 
             // btnSua
             // 
             this.btnSua.Location = new System.Drawing.Point(80, 10);
@@ -285,15 +275,25 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.BtnSua_Click);
             // 
-            // btnLuu
+            // btnThem
             // 
-            this.btnLuu.Location = new System.Drawing.Point(231, 10);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(70, 40);
-            this.btnLuu.TabIndex = 5;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.BtnLuu_Click);
+            this.btnThem.Location = new System.Drawing.Point(4, 10);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(70, 40);
+            this.btnThem.TabIndex = 0;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.BtnThem_Click);
+            // 
+            // cboKhachHang
+            // 
+            this.cboKhachHang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboKhachHang.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.cboKhachHang.FormattingEnabled = true;
+            this.cboKhachHang.Location = new System.Drawing.Point(135, 83);
+            this.cboKhachHang.Name = "cboKhachHang";
+            this.cboKhachHang.Size = new System.Drawing.Size(230, 25);
+            this.cboKhachHang.TabIndex = 8;
             // 
             // FormQuanLyDongHoNuoc
             // 
@@ -330,7 +330,6 @@
         private System.Windows.Forms.TextBox txtMaDongHo;
         private System.Windows.Forms.TextBox txtSoSeri;
         private System.Windows.Forms.TextBox txtViTri;
-        private System.Windows.Forms.ComboBox cboKhachHang;
         private System.Windows.Forms.DateTimePicker dtpNgayLapDat;
         private System.Windows.Forms.DateTimePicker dtpNgayKiemDinh;
         private System.Windows.Forms.ComboBox cboTrangThai;
@@ -339,5 +338,6 @@
         private System.Windows.Forms.Button btnLamMoi;
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.ComboBox cboKhachHang;
     }
 }
