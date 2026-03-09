@@ -178,6 +178,9 @@
     <EmbeddedResource Include="Nhóm Danh mục\FormQuanLyDongHoNuoc.resx">
       <DependentUpon>FormQuanLyDongHoNuoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Nhóm Danh mục\FormQuanLyKhachHang.resx">
+      <DependentUpon>FormQuanLyKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Nhóm Danh mục\FormQuanLyKhuVuc.resx">
       <DependentUpon>FormQuanLyKhuVuc.cs</DependentUpon>
     </EmbeddedResource>
